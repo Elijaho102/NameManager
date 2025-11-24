@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Namemanager {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Namestore store = new Namestore();
+        Sorter sorter = new Sorter();
+        Searcher searcher = new Searcher();
+
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n---Name Management System---");
+            System.out.println("1. Add Name");
+            System.out.println("2. View Names");
+            System.out.println("3. Sort Names");
+            System.out.println("4. Search Name");
+            System.out.println("5. Compare Data Structures");
+            System.out.println("6. Exit");
+            System.out.print("Enter choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    store.addName(scanner);
+                    break;
+                case 2:
+                    store.viewNames();
+                    break;
+                case 3:
+                    sorter.sortNames(scanner, store.getNameList());
+                    break;
+                case 4:
+                    searcher.search(scanner, store.getNameList());
+                    break;
+                case 5:
+                    store.compareStructures();
+                    break;
+                case 6:
+                    running = false;
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+        scanner.close();
+    }
+}
